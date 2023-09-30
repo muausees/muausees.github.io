@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/09/30/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very
-first post. Check <a href="https://hexo.io/docs/">documentation</a> for
-more info. If you get any problems when using Hexo, you can find the
-answer in <a
-href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
-you can ask me on <a
-href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="quick-start">Quick Start</h2>
-<h3 id="create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a
-href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a
-href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a
-href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>#一些个人认为比较好的日报文章（看得懂的）</title>
+    <url>/2023/09/30/%E4%B8%80%E4%BA%9B%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E6%AF%94%E8%BE%83%E5%A5%BD%E7%9A%84%E6%97%A5%E6%8A%A5%E6%96%87%E7%AB%A0%EF%BC%88%E7%9C%8B%E5%BE%97%E6%87%82%E7%9A%84%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="从-c98-到-c20寻觅甜甜的语法糖们">从 C++98 到
+C++20，寻觅甜甜的语法糖们</h3>
+<p>https://www.luogu.com.cn/blog/AccRobin/grammar-candies</p>
 ]]></content>
+      <categories>
+        <category>-资料</category>
+      </categories>
+      <tags>
+        <tag>-资料 -洛谷</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>#一些好用的资料</title>
+    <url>/2023/09/30/%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E8%B5%84%E6%96%99/</url>
+    <content><![CDATA[<h2 id="markdown相关">Markdown相关</h2>
+<h3
+id="使用katex在markdown文件中进行数学排版">使用KaTeX在Markdown文件中进行数学排版</h3>
+<p><strong>https://zhuanlan.zhihu.com/p/518199394</strong></p>
+<h3 id="markdown语法汇总">MarkDown语法汇总</h3>
+<p><strong>https://blog.csdn.net/CynalFly/article/details/118880498</strong></p>
+]]></content>
+      <categories>
+        <category>-资料</category>
+      </categories>
+      <tags>
+        <tag>-资料</tag>
+      </tags>
   </entry>
 </search>
