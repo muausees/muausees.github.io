@@ -156,18 +156,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -202,6 +202,257 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://muausees.github.io/2023/10/03/iOS%E7%89%88%20Arcaea4.x%20%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="MUAUSEES">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MUAUSEES's Arcadia">
+      <meta itemprop="description" content="人生苦短，不如多干点自己想干的事">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | MUAUSEES's Arcadia">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/10/03/iOS%E7%89%88%20Arcaea4.x%20%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">iOS版 Arcaea4.x 破解记录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-03 10:55:50 / 修改时间：10:56:42" itemprop="dateCreated datePublished" datetime="2023-10-03T10:55:50+08:00">2023-10-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E6%B8%B8/" itemprop="url" rel="index"><span itemprop="name">音游</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E6%B8%B8/Arcaea/" itemprop="url" rel="index"><span itemprop="name">Arcaea</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E6%B8%B8/Arcaea/Fanmade/" itemprop="url" rel="index"><span itemprop="name">Fanmade</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2
+id="关于4.x版本ios自制壳子破解记录">关于4.x版本iOS自制壳子破解记录</h2>
+<p><em>此教程也适用于5.0！</em></p>
+<h3 id="破解hash校验"><strong>1、破解HASH校验</strong></h3>
+<p>在函数窗口搜索exit</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/959d33291e843f5a76bffc8a5d600bfb494021435.png@1192w.webp" /></p>
+<p>找xref:</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/3e8dbdaeacfc86f555c64d7e69ebe4f0494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/592721f2dbb5dc4369a9e0fb4e4130c4494021435.png@1192w.webp" /></p>
+<p>再找</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/88246604f84da7214e7975dbfb20c5af494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/53e07acca7556212c03d85b9ebfe932f494021435.png@1192w.webp" /></p>
+<p>NOP掉</p>
+<h3 id="allowmemes"><strong>2、AllowMemes</strong></h3>
+<p>4.0对AllowMemes又进行了更改，所以和3.12.6的改法会有所不同。</p>
+<p>搜索GameEnd</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/68f5385e9ee095d8330028c99d7e3e67494021435.png@1192w.webp" /></p>
+<p>按x，跳转到第一个</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/837f8cb8de37cd70f610fe4a5685fa41494021435.png@1192w.webp" /></p>
+<p>找它上面第二个BL</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/0ffd1725ce282e3e6c6917868a983cdc494021435.png@1192w.webp" /></p>
+<p>让它直接返回1</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/065a06f8100e5a54718e25b8be10061d494021435.png@1192w.webp" /></p>
+<p>立即数搜索0x108，过滤出LDRB</p>
+<p>直接排除SP</p>
+<p>把紧挨在一起的LDRB和CBZ直接NOP</p>
+<p>有两个特殊，记录一下：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/f9609d868f3ba620eedce85cfbb16646494021435.png@1192w.webp" /></p>
+<p>NOP，保留夹在中间的LDR</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/c42c6aace372c0addfc78956bfe152cb494021435.png@1192w.webp" /></p>
+<p>NOP，还需修改LDRB上面的CMP W1,<a
+target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=2%2C%E4%BF%AE%E6%94%B9%E4%B8%BACMP%20W1%2C">#2,修改为CMP
+W1,#</a>3，这样就能读绿蛇了</p>
+<h3
+id="修复arctap高于2.1时无法点击的问题442及以后版本无需修改"><strong>3、修复ArcTap高于2.1时无法点击的问题（442及以后版本无需修改</strong></h3>
+<p>搜索立即数0x43540000来定位，找到一处没有既没有一大堆case也没有white.png的</p>
+<p>FMUL S1, S1, S2</p>
+<p>LDR S2, [X19,#4]</p>
+<p>需NOP的部分</p>
+<p>MOV W8, #0x42700000</p>
+<p>FMOV S1, W8</p>
+<p>MOV W8, #0x43540000</p>
+<p>B loc_10048</p>
+<p>这样子</p>
+<p><strong>修改各个框所需ptt值</strong></p>
+<p>搜rating_o.png,按x，跳到第一个，F5伪代码</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/450619f521821aefe8f00bc648bbdcc6494021435.png@1192w.webp" /></p>
+<p>很明显，直接选择patch就行</p>
+<h3 id="修改难度文本和"><strong>4、修改难度文本“+”和“？”</strong></h3>
+<p>这里的“+”指的是9+、10+...</p>
+<p>？则是难度等于0时，自动变为？</p>
+<p>悲报：5.0结算界面的？难度会直接显示为0，估计愚人节会修</p>
+<p>搜Results.csb,xref,跳到第二处，F5，找到这里</p>
+<p>每个版本可能会有些许不同</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/05d04ffb6d35bf4a0b97139eb1001040494021435.png@996w_1060h.webp" /></p>
+<p>点过去</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/f8144ac3c2479d205a33b9fd4a8dbfe1494021435.png@1192w.webp" /></p>
+<h3 id="修改曲包分类条位置"><strong>5、修改曲包分类条位置</strong></h3>
+<p><strong><em>5.0直接在packlist里面修改即可！</em></strong></p>
+<p>搜img/divider_collab.png</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/a64d0442d7717a58db22c0a7f7666677494021435.png@1104w_1348h.webp" /></p>
+<p>可以发现，曲包条由之前的数值变为了v几，我们看看这几个</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/49e8476a71a5a294184e284a1fb4fda1494021435.png@424w_104h.webp" /></p>
+<p>这俩又被v10控制了，看看v10</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/580f38996bc3322dbb15f20e8bcdc0b8494021435.png@572w_152h.webp" /></p>
+<p>修改此处即可</p>
+<h3 id="风暴异像"><strong>6、风暴异像</strong></h3>
+<h4 id="异像时间"><strong>1、异像时间</strong></h4>
+<p>根据wiki，可以看到大致时间，转换为毫秒</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/2ae0c0b31dab4d833f29cf31b6e81133494021435.png@1192w.webp" /></p>
+<p>在字符串窗口搜“tempestissimo_pretrigger_ui_changes”</p>
+<p>找xref，看伪代码</p>
+<p>一共四处，我已经改完了</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/51a6f9d8fc75bba749187debca8357bf494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/26ef8931afeba035932bf8e2b03fb666494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/7c2d6bbc35fc1e68671d9dba702c9e3d494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/bfe82a9e2063ae9deb65ed03c9301119494021435.png@1192w.webp" /></p>
+<h4 id="触发异像所需的角色"><strong>2、触发异像所需的角色</strong></h4>
+<p><img
+src="https://i0.hdslb.com/bfs/article/1cf4bd5dbf7ae2ede1228de8c10180b7494021435.png@1192w.webp" /></p>
+<p>已知骨折光charid为15，我猜是按照15搜</p>
+<p>搜tempestissimo_red.jpg</p>
+<p>xref,F5,然后拉到最上面，Tab，有一个t_shadow_top.png</p>
+<p>再xref，进入SpecialSceneTempestissimoChallenge::init</p>
+<p>拉到最上面，找15</p>
+<p>这里我改为了45=&gt;拉格兰</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/ee934864136995f2ed6a188201233dd3494021435.png@1192w.webp" /></p>
+<h4 id="进入异像条件"><strong>3、进入异像条件</strong></h4>
+<h5
+id="角色等级和时间在一个地方"><strong>1️⃣角色等级（和时间在一个地方）</strong></h5>
+<p><img
+src="https://i0.hdslb.com/bfs/article/ceef0639ba1aca08dc34c982134f200d494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/85a4374dec3003ae675c65d0acf1717b494021435.png@1192w.webp" /></p>
+<h5 id="解锁ftr的前置条件"><strong>2️⃣解锁FTR的前置条件</strong></h5>
+<p><img
+src="https://i0.hdslb.com/bfs/article/eaedd7b9ebc26261c61b77ba90b09b91494021435.png@1192w.webp" /></p>
+<p>超过300，那就立即数搜301</p>
+<p>过滤出CMP ? #0x12D，再F5，如果有antagonism字样说明找对了</p>
+<p>自由发挥！</p>
+<h3 id="拉格兰异像时间"><strong>6、拉格兰异像时间</strong></h3>
+<p>拉格兰比较麻烦，没找到字符串定位</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/12601c83c329b1f64ea133b3da667f6b494021435.png@1192w.webp" /></p>
+<p>随便进去一个看看</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/9531974fb31dea9a97e7f98865310baf494021435.png@1192w.webp" /></p>
+<p>上面有一个_ZTS32SpecialSceneAegleseekerChallenge</p>
+<p>通过不断xref可以定位到这里：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/bbc4b8141d429f0efe9036234e127602494021435.png@1192w.webp" /></p>
+<p>看起来很头大，别急</p>
+<p>拉到最后面</p>
+<p>从下往上数第三个nullsub_XXX</p>
+<p>在它下面就是我们要找的</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/9e3692723854378da6f5a0a037495f11494021435.png@1192w.webp" /></p>
+<p>点进去，F5</p>
+<p>好了，看到像是时间的就直接修改！</p>
+<h3 id="病女异像"><strong>7、病女异像</strong></h3>
+<h4 id="时间回忆率要求">1️⃣<strong>时间&amp;回忆率要求</strong></h4>
+<p>搜fadeOutBGM的xref，第一个，然后F5</p>
+<p>如图：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/4874af438a3247f3def1ce8c78b87b4d494021435.png@1192w.webp" /></p>
+<h4 id="所需角色"><strong>2️⃣所需角色</strong></h4>
+<p>我们扒拉到1️⃣伪代码最前面，Tab，找所在函数的xref</p>
+<p>你会看到：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/16b6a5869757622325e97cb00ec4e623494021435.png@464w_3048h.webp" /></p>
+<p>这怎么找嘛（
+别急，我们慢慢摸索，以刚才那个函数为中心，看看它上下5个内的其他函数
+最终会定位到这里，正好在上面的第五个</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/84354edfb5cb557082fe70c9918067ad494021435.png@1192w.webp" /></p>
+<p>好像有点眼熟，和风暴的很像，改一下试试</p>
+<p>成功了！</p>
+<hr />
+<p>转载自Bilibili <span class="citation"
+data-cites="GzRay12456">@GzRay12456</span></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/847883181980909625">iOS版
+Arcaea4.x 破解记录</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

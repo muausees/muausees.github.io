@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"muausees.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="关于4.x版本iOS自制壳子破解记录 此教程也适用于5.0！ 1、破解HASH校验 在函数窗口搜索exit  找xref:   再找   NOP掉 2、AllowMemes 4.0对AllowMemes又进行了更改，所以和3.12.6的改法会有所不同。 搜索GameEnd  按x，跳转到第一个  找它上面第二个BL  让它直接返回1  立即数搜索0x10">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS版 Arcaea4.x 破解记录">
+<meta property="og:url" content="https://muausees.github.io/2023/10/03/iOS%E7%89%88%20Arcaea4.x%20%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="MUAUSEES&#39;s Arcadia">
+<meta property="og:description" content="关于4.x版本iOS自制壳子破解记录 此教程也适用于5.0！ 1、破解HASH校验 在函数窗口搜索exit  找xref:   再找   NOP掉 2、AllowMemes 4.0对AllowMemes又进行了更改，所以和3.12.6的改法会有所不同。 搜索GameEnd  按x，跳转到第一个  找它上面第二个BL  让它直接返回1  立即数搜索0x10">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-03T02:55:50.000Z">
+<meta property="article:modified_time" content="2023-10-03T02:56:42.609Z">
+<meta property="article:author" content="MUAUSEES">
+<meta property="article:tag" content="音游">
+<meta property="article:tag" content="技术 - Arcaea">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://muausees.github.io/2023/10/03/iOS%E7%89%88%20Arcaea4.x%20%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://muausees.github.io/2023/10/03/iOS%E7%89%88%20Arcaea4.x%20%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95/","path":"2023/10/03/iOS版 Arcaea4.x 破解记录/","title":"iOS版 Arcaea4.x 破解记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>iOS版 Arcaea4.x 破解记录 | MUAUSEES's Arcadia</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">MUAUSEES's Arcadia</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">喵瑟斯的世外桃源</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E4.x%E7%89%88%E6%9C%ACios%E8%87%AA%E5%88%B6%E5%A3%B3%E5%AD%90%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">关于4.x版本iOS自制壳子破解记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%B4%E8%A7%A3hash%E6%A0%A1%E9%AA%8C"><span class="nav-number">1.1.</span> <span class="nav-text">1、破解HASH校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#allowmemes"><span class="nav-number">1.2.</span> <span class="nav-text">2、AllowMemes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8Darctap%E9%AB%98%E4%BA%8E2.1%E6%97%B6%E6%97%A0%E6%B3%95%E7%82%B9%E5%87%BB%E7%9A%84%E9%97%AE%E9%A2%98442%E5%8F%8A%E4%BB%A5%E5%90%8E%E7%89%88%E6%9C%AC%E6%97%A0%E9%9C%80%E4%BF%AE%E6%94%B9"><span class="nav-number">1.3.</span> <span class="nav-text">3、修复ArcTap高于2.1时无法点击的问题（442及以后版本无需修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%9A%BE%E5%BA%A6%E6%96%87%E6%9C%AC%E5%92%8C"><span class="nav-number">1.4.</span> <span class="nav-text">4、修改难度文本“+”和“？”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%9B%B2%E5%8C%85%E5%88%86%E7%B1%BB%E6%9D%A1%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.5.</span> <span class="nav-text">5、修改曲包分类条位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A3%8E%E6%9A%B4%E5%BC%82%E5%83%8F"><span class="nav-number">1.6.</span> <span class="nav-text">6、风暴异像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%82%E5%83%8F%E6%97%B6%E9%97%B4"><span class="nav-number">1.6.1.</span> <span class="nav-text">1、异像时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A6%E5%8F%91%E5%BC%82%E5%83%8F%E6%89%80%E9%9C%80%E7%9A%84%E8%A7%92%E8%89%B2"><span class="nav-number">1.6.2.</span> <span class="nav-text">2、触发异像所需的角色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E5%85%A5%E5%BC%82%E5%83%8F%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.6.3.</span> <span class="nav-text">3、进入异像条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E7%AD%89%E7%BA%A7%E5%92%8C%E6%97%B6%E9%97%B4%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%9C%B0%E6%96%B9"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">1️⃣角色等级（和时间在一个地方）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%94%81ftr%E7%9A%84%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.6.3.2.</span> <span class="nav-text">2️⃣解锁FTR的前置条件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%89%E6%A0%BC%E5%85%B0%E5%BC%82%E5%83%8F%E6%97%B6%E9%97%B4"><span class="nav-number">1.7.</span> <span class="nav-text">6、拉格兰异像时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%97%85%E5%A5%B3%E5%BC%82%E5%83%8F"><span class="nav-number">1.8.</span> <span class="nav-text">7、病女异像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%97%B4%E5%9B%9E%E5%BF%86%E7%8E%87%E8%A6%81%E6%B1%82"><span class="nav-number">1.8.1.</span> <span class="nav-text">1️⃣时间&amp;回忆率要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E8%A7%92%E8%89%B2"><span class="nav-number">1.8.2.</span> <span class="nav-text">2️⃣所需角色</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MUAUSEES"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">MUAUSEES</p>
+  <div class="site-description" itemprop="description">人生苦短，不如多干点自己想干的事</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/zhanghaoxuan2000@outlook.com" title="E-Mail → zhanghaoxuan2000@outlook.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.luogu.com.cn/user/998911" title="Luogu → https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;998911" rel="noopener me" target="_blank"><i class="fab fa-luogu fa-fw"></i>Luogu</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/420325368" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;420325368" rel="noopener me" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://muausees.github.io/2023/10/03/iOS%E7%89%88%20Arcaea4.x%20%E7%A0%B4%E8%A7%A3%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="MUAUSEES">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MUAUSEES's Arcadia">
+      <meta itemprop="description" content="人生苦短，不如多干点自己想干的事">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="iOS版 Arcaea4.x 破解记录 | MUAUSEES's Arcadia">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS版 Arcaea4.x 破解记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-10-03 10:55:50 / 修改时间：10:56:42" itemprop="dateCreated datePublished" datetime="2023-10-03T10:55:50+08:00">2023-10-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E6%B8%B8/" itemprop="url" rel="index"><span itemprop="name">音游</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E6%B8%B8/Arcaea/" itemprop="url" rel="index"><span itemprop="name">Arcaea</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9F%B3%E6%B8%B8/Arcaea/Fanmade/" itemprop="url" rel="index"><span itemprop="name">Fanmade</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2
+id="关于4.x版本ios自制壳子破解记录">关于4.x版本iOS自制壳子破解记录</h2>
+<p><em>此教程也适用于5.0！</em></p>
+<h3 id="破解hash校验"><strong>1、破解HASH校验</strong></h3>
+<p>在函数窗口搜索exit</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/959d33291e843f5a76bffc8a5d600bfb494021435.png@1192w.webp" /></p>
+<p>找xref:</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/3e8dbdaeacfc86f555c64d7e69ebe4f0494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/592721f2dbb5dc4369a9e0fb4e4130c4494021435.png@1192w.webp" /></p>
+<p>再找</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/88246604f84da7214e7975dbfb20c5af494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/53e07acca7556212c03d85b9ebfe932f494021435.png@1192w.webp" /></p>
+<p>NOP掉</p>
+<h3 id="allowmemes"><strong>2、AllowMemes</strong></h3>
+<p>4.0对AllowMemes又进行了更改，所以和3.12.6的改法会有所不同。</p>
+<p>搜索GameEnd</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/68f5385e9ee095d8330028c99d7e3e67494021435.png@1192w.webp" /></p>
+<p>按x，跳转到第一个</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/837f8cb8de37cd70f610fe4a5685fa41494021435.png@1192w.webp" /></p>
+<p>找它上面第二个BL</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/0ffd1725ce282e3e6c6917868a983cdc494021435.png@1192w.webp" /></p>
+<p>让它直接返回1</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/065a06f8100e5a54718e25b8be10061d494021435.png@1192w.webp" /></p>
+<p>立即数搜索0x108，过滤出LDRB</p>
+<p>直接排除SP</p>
+<p>把紧挨在一起的LDRB和CBZ直接NOP</p>
+<p>有两个特殊，记录一下：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/f9609d868f3ba620eedce85cfbb16646494021435.png@1192w.webp" /></p>
+<p>NOP，保留夹在中间的LDR</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/c42c6aace372c0addfc78956bfe152cb494021435.png@1192w.webp" /></p>
+<p>NOP，还需修改LDRB上面的CMP W1,<a
+target="_blank" rel="noopener" href="https://search.bilibili.com/all?keyword=2%2C%E4%BF%AE%E6%94%B9%E4%B8%BACMP%20W1%2C">#2,修改为CMP
+W1,#</a>3，这样就能读绿蛇了</p>
+<h3
+id="修复arctap高于2.1时无法点击的问题442及以后版本无需修改"><strong>3、修复ArcTap高于2.1时无法点击的问题（442及以后版本无需修改</strong></h3>
+<p>搜索立即数0x43540000来定位，找到一处没有既没有一大堆case也没有white.png的</p>
+<p>FMUL S1, S1, S2</p>
+<p>LDR S2, [X19,#4]</p>
+<p>需NOP的部分</p>
+<p>MOV W8, #0x42700000</p>
+<p>FMOV S1, W8</p>
+<p>MOV W8, #0x43540000</p>
+<p>B loc_10048</p>
+<p>这样子</p>
+<p><strong>修改各个框所需ptt值</strong></p>
+<p>搜rating_o.png,按x，跳到第一个，F5伪代码</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/450619f521821aefe8f00bc648bbdcc6494021435.png@1192w.webp" /></p>
+<p>很明显，直接选择patch就行</p>
+<h3 id="修改难度文本和"><strong>4、修改难度文本“+”和“？”</strong></h3>
+<p>这里的“+”指的是9+、10+...</p>
+<p>？则是难度等于0时，自动变为？</p>
+<p>悲报：5.0结算界面的？难度会直接显示为0，估计愚人节会修</p>
+<p>搜Results.csb,xref,跳到第二处，F5，找到这里</p>
+<p>每个版本可能会有些许不同</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/05d04ffb6d35bf4a0b97139eb1001040494021435.png@996w_1060h.webp" /></p>
+<p>点过去</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/f8144ac3c2479d205a33b9fd4a8dbfe1494021435.png@1192w.webp" /></p>
+<h3 id="修改曲包分类条位置"><strong>5、修改曲包分类条位置</strong></h3>
+<p><strong><em>5.0直接在packlist里面修改即可！</em></strong></p>
+<p>搜img/divider_collab.png</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/a64d0442d7717a58db22c0a7f7666677494021435.png@1104w_1348h.webp" /></p>
+<p>可以发现，曲包条由之前的数值变为了v几，我们看看这几个</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/49e8476a71a5a294184e284a1fb4fda1494021435.png@424w_104h.webp" /></p>
+<p>这俩又被v10控制了，看看v10</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/580f38996bc3322dbb15f20e8bcdc0b8494021435.png@572w_152h.webp" /></p>
+<p>修改此处即可</p>
+<h3 id="风暴异像"><strong>6、风暴异像</strong></h3>
+<h4 id="异像时间"><strong>1、异像时间</strong></h4>
+<p>根据wiki，可以看到大致时间，转换为毫秒</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/2ae0c0b31dab4d833f29cf31b6e81133494021435.png@1192w.webp" /></p>
+<p>在字符串窗口搜“tempestissimo_pretrigger_ui_changes”</p>
+<p>找xref，看伪代码</p>
+<p>一共四处，我已经改完了</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/51a6f9d8fc75bba749187debca8357bf494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/26ef8931afeba035932bf8e2b03fb666494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/7c2d6bbc35fc1e68671d9dba702c9e3d494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/bfe82a9e2063ae9deb65ed03c9301119494021435.png@1192w.webp" /></p>
+<h4 id="触发异像所需的角色"><strong>2、触发异像所需的角色</strong></h4>
+<p><img
+src="https://i0.hdslb.com/bfs/article/1cf4bd5dbf7ae2ede1228de8c10180b7494021435.png@1192w.webp" /></p>
+<p>已知骨折光charid为15，我猜是按照15搜</p>
+<p>搜tempestissimo_red.jpg</p>
+<p>xref,F5,然后拉到最上面，Tab，有一个t_shadow_top.png</p>
+<p>再xref，进入SpecialSceneTempestissimoChallenge::init</p>
+<p>拉到最上面，找15</p>
+<p>这里我改为了45=&gt;拉格兰</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/ee934864136995f2ed6a188201233dd3494021435.png@1192w.webp" /></p>
+<h4 id="进入异像条件"><strong>3、进入异像条件</strong></h4>
+<h5
+id="角色等级和时间在一个地方"><strong>1️⃣角色等级（和时间在一个地方）</strong></h5>
+<p><img
+src="https://i0.hdslb.com/bfs/article/ceef0639ba1aca08dc34c982134f200d494021435.png@1192w.webp" /></p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/85a4374dec3003ae675c65d0acf1717b494021435.png@1192w.webp" /></p>
+<h5 id="解锁ftr的前置条件"><strong>2️⃣解锁FTR的前置条件</strong></h5>
+<p><img
+src="https://i0.hdslb.com/bfs/article/eaedd7b9ebc26261c61b77ba90b09b91494021435.png@1192w.webp" /></p>
+<p>超过300，那就立即数搜301</p>
+<p>过滤出CMP ? #0x12D，再F5，如果有antagonism字样说明找对了</p>
+<p>自由发挥！</p>
+<h3 id="拉格兰异像时间"><strong>6、拉格兰异像时间</strong></h3>
+<p>拉格兰比较麻烦，没找到字符串定位</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/12601c83c329b1f64ea133b3da667f6b494021435.png@1192w.webp" /></p>
+<p>随便进去一个看看</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/9531974fb31dea9a97e7f98865310baf494021435.png@1192w.webp" /></p>
+<p>上面有一个_ZTS32SpecialSceneAegleseekerChallenge</p>
+<p>通过不断xref可以定位到这里：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/bbc4b8141d429f0efe9036234e127602494021435.png@1192w.webp" /></p>
+<p>看起来很头大，别急</p>
+<p>拉到最后面</p>
+<p>从下往上数第三个nullsub_XXX</p>
+<p>在它下面就是我们要找的</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/9e3692723854378da6f5a0a037495f11494021435.png@1192w.webp" /></p>
+<p>点进去，F5</p>
+<p>好了，看到像是时间的就直接修改！</p>
+<h3 id="病女异像"><strong>7、病女异像</strong></h3>
+<h4 id="时间回忆率要求">1️⃣<strong>时间&amp;回忆率要求</strong></h4>
+<p>搜fadeOutBGM的xref，第一个，然后F5</p>
+<p>如图：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/4874af438a3247f3def1ce8c78b87b4d494021435.png@1192w.webp" /></p>
+<h4 id="所需角色"><strong>2️⃣所需角色</strong></h4>
+<p>我们扒拉到1️⃣伪代码最前面，Tab，找所在函数的xref</p>
+<p>你会看到：</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/16b6a5869757622325e97cb00ec4e623494021435.png@464w_3048h.webp" /></p>
+<p>这怎么找嘛（
+别急，我们慢慢摸索，以刚才那个函数为中心，看看它上下5个内的其他函数
+最终会定位到这里，正好在上面的第五个</p>
+<p><img
+src="https://i0.hdslb.com/bfs/article/84354edfb5cb557082fe70c9918067ad494021435.png@1192w.webp" /></p>
+<p>好像有点眼熟，和风暴的很像，改一下试试</p>
+<p>成功了！</p>
+<hr />
+<p>转载自Bilibili <span class="citation"
+data-cites="GzRay12456">@GzRay12456</span></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/847883181980909625">iOS版
+Arcaea4.x 破解记录</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9F%B3%E6%B8%B8/" rel="tag"># 音游</a>
+              <a href="/tags/%E6%8A%80%E6%9C%AF-Arcaea/" rel="tag"># 技术 - Arcaea</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/30/%E6%9C%80%E7%88%B1%E6%9B%B2%E5%A4%A7%E5%85%A8/" rel="prev" title="最爱曲大全">
+                  <i class="fa fa-angle-left"></i> 最爱曲大全
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MUAUSEES</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+  <a href="https://github.com/muausees" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","mhchem":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
